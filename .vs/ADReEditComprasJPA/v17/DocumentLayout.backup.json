@@ -1,55 +1,80 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\",
+  "WorkspaceRootPath": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|c:\\users\\jtalm\\source\\repos\\adreeditcomprasjpa\\adreeditcomprasjpa\\purchases\\formularioeditorcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|c:\\users\\jpval\\desktop\\adreeditcomprasjpa\\adreeditcomprasjpa\\purchases\\formularioeditorcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|solutionrelative:adreeditcomprasjpa\\purchases\\formularioeditorcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|c:\\users\\jtalm\\source\\repos\\adreeditcomprasjpa\\adreeditcomprasjpa\\purchases\\formularioeditorcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\adreeditcomprasjpa\\purchases\\formularioeditorcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|solutionrelative:adreeditcomprasjpa\\purchases\\formularioeditorcompras.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|c:\\users\\jtalm\\source\\repos\\adreeditcomprasjpa\\adreeditcomprasjpa\\disposable\\disposablebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|c:\\users\\jpval\\desktop\\adreeditcomprasjpa\\adreeditcomprasjpa\\purchases\\formularioeditorcompras.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|solutionrelative:adreeditcomprasjpa\\purchases\\formularioeditorcompras.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\adreeditcomprasjpa\\disposable\\disposablebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|solutionrelative:adreeditcomprasjpa\\disposable\\disposablebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|c:\\users\\jtalm\\source\\repos\\adreeditcomprasjpa\\adreeditcomprasjpa\\context\\prisdkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\adreeditcomprasjpa\\context\\prisdkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC9C0B4D-F052-4BB6-8FDD-303FEE3BB34F}|ADReEditComprasJPA\\ADReEditComprasJPA.csproj|solutionrelative:adreeditcomprasjpa\\context\\prisdkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
-      "VerticalTabListWidth": 256,
+      "VerticalTabListWidth": 172,
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "FormularioEditorCompras.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.Designer.cs",
+              "RelativeDocumentMoniker": "ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.Designer.cs",
+              "ToolTip": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.Designer.cs",
+              "RelativeToolTip": "ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.Designer.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAUwFgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T11:02:03.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "DisposableBase.cs",
-              "DocumentMoniker": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\ADReEditComprasJPA\\Disposable\\DisposableBase.cs",
+              "DocumentMoniker": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Disposable\\DisposableBase.cs",
               "RelativeDocumentMoniker": "ADReEditComprasJPA\\Disposable\\DisposableBase.cs",
-              "ToolTip": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\ADReEditComprasJPA\\Disposable\\DisposableBase.cs",
+              "ToolTip": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Disposable\\DisposableBase.cs",
               "RelativeToolTip": "ADReEditComprasJPA\\Disposable\\DisposableBase.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAqwHYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T09:00:48.79Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "PriSDKContext.cs",
-              "DocumentMoniker": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\ADReEditComprasJPA\\Context\\PriSDKContext.cs",
+              "DocumentMoniker": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Context\\PriSDKContext.cs",
               "RelativeDocumentMoniker": "ADReEditComprasJPA\\Context\\PriSDKContext.cs",
-              "ToolTip": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\ADReEditComprasJPA\\Context\\PriSDKContext.cs",
+              "ToolTip": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Context\\PriSDKContext.cs",
               "RelativeToolTip": "ADReEditComprasJPA\\Context\\PriSDKContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwDEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T09:00:08.41Z",
               "EditorCaption": ""
@@ -58,10 +83,10 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "FormularioEditorCompras.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs",
+              "DocumentMoniker": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs",
               "RelativeDocumentMoniker": "ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs",
-              "ToolTip": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs [Design]*",
-              "RelativeToolTip": "ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs [Design]*",
+              "ToolTip": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs [Design]",
+              "RelativeToolTip": "ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T08:42:46.399Z",
               "EditorCaption": " [Design]"
@@ -70,11 +95,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "FormularioEditorCompras.cs",
-              "DocumentMoniker": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs",
+              "DocumentMoniker": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs",
               "RelativeDocumentMoniker": "ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs",
-              "ToolTip": "C:\\Users\\jtalm\\source\\repos\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs*",
-              "RelativeToolTip": "ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs*",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB4AAAANAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\jpval\\Desktop\\ADReEditComprasJPA\\ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs",
+              "RelativeToolTip": "ADReEditComprasJPA\\Purchases\\FormularioEditorCompras.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAkwIAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T08:42:34.313Z",
               "EditorCaption": ""

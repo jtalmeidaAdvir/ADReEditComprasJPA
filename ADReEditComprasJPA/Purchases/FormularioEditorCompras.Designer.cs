@@ -1,7 +1,10 @@
-﻿namespace ADReEditComprasJPA.Purchases
+﻿using PRISDK100;
+
+namespace ADReEditComprasJPA.Purchases
 {
     partial class FormularioEditorCompras
     {
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -28,12 +31,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioEditorCompras));
             this.f41 = new PRISDK100.F4();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.numerodoc = new System.Windows.Forms.NumericUpDown();
+            this.serie = new System.Windows.Forms.ComboBox();
+            this.GridLinhasArtigos = new System.Windows.Forms.DataGridView();
+            this.Artigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Especialidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            ((System.ComponentModel.ISupportInitialize)(this.numerodoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridLinhasArtigos)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // f41
@@ -53,7 +70,7 @@
             this.f41.F4Modal = false;
             this.f41.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.f41.IDCategoria = "DocumentosCompra";
-            this.f41.Location = new System.Drawing.Point(3, 12);
+            this.f41.Location = new System.Drawing.Point(25, 38);
             this.f41.MaxLengthDescricao = 0;
             this.f41.MaxLengthF4 = 50;
             this.f41.MinimumSize = new System.Drawing.Size(37, 21);
@@ -70,60 +87,164 @@
             this.f41.ResourcePersonalizada = false;
             this.f41.Restricao = "";
             this.f41.SelectionFormula = "";
-            this.f41.Size = new System.Drawing.Size(311, 22);
+            this.f41.Size = new System.Drawing.Size(433, 22);
             this.f41.TabIndex = 0;
             this.f41.TextoDescricao = "";
             this.f41.WidthEspacamento = 60;
             this.f41.WidthF4 = 1590;
             this.f41.WidthLink = 1575;
+            this.f41.TextChange += new PRISDK100.F4.TextChangeHandler(this.f41_TextChange);
             this.f41.Load += new System.EventHandler(this.f41_Load);
             // 
-            // numericUpDown1
+            // numerodoc
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(414, 14);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(65, 20);
-            this.numericUpDown1.TabIndex = 1;
+            this.numerodoc.Location = new System.Drawing.Point(558, 38);
+            this.numerodoc.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numerodoc.Name = "numerodoc";
+            this.numerodoc.Size = new System.Drawing.Size(65, 20);
+            this.numerodoc.TabIndex = 1;
+            this.numerodoc.ValueChanged += new System.EventHandler(this.numerodoc_ValueChanged);
             // 
-            // comboBox1
+            // serie
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(320, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(88, 21);
-            this.comboBox1.TabIndex = 2;
+            this.serie.FormattingEnabled = true;
+            this.serie.Location = new System.Drawing.Point(464, 38);
+            this.serie.Name = "serie";
+            this.serie.Size = new System.Drawing.Size(88, 21);
+            this.serie.TabIndex = 2;
+            this.serie.SelectedIndexChanged += new System.EventHandler(this.serie_SelectedIndexChanged);
             // 
-            // dataGridView1
+            // GridLinhasArtigos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 54);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(476, 311);
-            this.dataGridView1.TabIndex = 3;
+            this.GridLinhasArtigos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GridLinhasArtigos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.GridLinhasArtigos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridLinhasArtigos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Artigo,
+            this.Descricao,
+            this.Item,
+            this.ItemDesc,
+            this.Classe,
+            this.Especialidade});
+            this.GridLinhasArtigos.Location = new System.Drawing.Point(25, 66);
+            this.GridLinhasArtigos.Name = "GridLinhasArtigos";
+            this.GridLinhasArtigos.Size = new System.Drawing.Size(598, 311);
+            this.GridLinhasArtigos.TabIndex = 3;
+            // 
+            // Artigo
+            // 
+            this.Artigo.HeaderText = "Artigo";
+            this.Artigo.Name = "Artigo";
+            this.Artigo.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "Item Desc";
+            this.ItemDesc.Name = "ItemDesc";
+            // 
+            // Classe
+            // 
+            this.Classe.HeaderText = "Classe";
+            this.Classe.Name = "Classe";
+            // 
+            // Especialidade
+            // 
+            this.Especialidade.HeaderText = "Especialidade";
+            this.Especialidade.Name = "Especialidade";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripButton,
+            this.salvarToolStripButton,
+            this.toolStripSeparator});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(656, 25);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // novoToolStripButton
+            // 
+            this.novoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.novoToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("novoToolStripButton.Image")));
+            this.novoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.novoToolStripButton.Name = "novoToolStripButton";
+            this.novoToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.novoToolStripButton.Text = "&Novo";
+            // 
+            // salvarToolStripButton
+            // 
+            this.salvarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.salvarToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("salvarToolStripButton.Image")));
+            this.salvarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.salvarToolStripButton.Name = "salvarToolStripButton";
+            this.salvarToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.salvarToolStripButton.Text = "&Salvar";
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
             // 
             // FormularioEditorCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.GridLinhasArtigos);
+            this.Controls.Add(this.serie);
+            this.Controls.Add(this.numerodoc);
             this.Controls.Add(this.f41);
             this.Name = "FormularioEditorCompras";
-            this.Size = new System.Drawing.Size(482, 368);
-            this.Text = "FormularioEditorCompras";
+            this.Size = new System.Drawing.Size(656, 405);
+            this.Text = "Alterador De Artigos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormularioEditorCompras_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerodoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridLinhasArtigos)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private PRISDK100.F4 f41;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.NumericUpDown numerodoc;
+        private System.Windows.Forms.ComboBox serie;
+        private System.Windows.Forms.DataGridView GridLinhasArtigos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Artigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Classe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidade;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton novoToolStripButton;
+        private System.Windows.Forms.ToolStripButton salvarToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
