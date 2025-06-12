@@ -72,12 +72,18 @@
       <HintPath>..\..\..\..\..\..\Program Files\PRIMAVERA\SG100\APL\Primavera.Extensibility.Integration.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Primavera.Extensibility.Patterns">
+      <HintPath>..\..\..\..\..\..\Program Files\PRIMAVERA\SG100\Apl\Primavera.Extensibility.Patterns.dll</HintPath>
+    </Reference>
     <Reference Include="Primavera.Extensibility.Purchases">
       <HintPath>..\..\..\..\..\..\Program Files\PRIMAVERA\SG100\APL\Primavera.Extensibility.Purchases.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PRISDK100">
       <HintPath>..\..\..\..\..\..\Program Files\PRIMAVERA\SG100\Apl\PRISDK100.dll</HintPath>
+    </Reference>
+    <Reference Include="PriTextBoxF4100">
+      <HintPath>..\..\..\..\..\..\Program Files\PRIMAVERA\SG100\Apl\PriTextBoxF4100.dll</HintPath>
     </Reference>
     <Reference Include="StdBE100">
       <HintPath>..\..\..\..\..\..\Program Files\PRIMAVERA\SG100\APL\StdBE100.dll</HintPath>

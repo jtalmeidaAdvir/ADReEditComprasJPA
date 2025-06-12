@@ -33,21 +33,24 @@ namespace ADReEditComprasJPA.Purchases
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioEditorCompras));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.f41 = new PRISDK100.F4();
             this.numerodoc = new System.Windows.Forms.NumericUpDown();
             this.serie = new System.Windows.Forms.ComboBox();
             this.GridLinhasArtigos = new System.Windows.Forms.DataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Artigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Projeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Especialidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.numerodoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLinhasArtigos)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -87,7 +90,7 @@ namespace ADReEditComprasJPA.Purchases
             this.f41.ResourcePersonalizada = false;
             this.f41.Restricao = "";
             this.f41.SelectionFormula = "";
-            this.f41.Size = new System.Drawing.Size(433, 22);
+            this.f41.Size = new System.Drawing.Size(492, 22);
             this.f41.TabIndex = 0;
             this.f41.TextoDescricao = "";
             this.f41.WidthEspacamento = 60;
@@ -98,7 +101,7 @@ namespace ADReEditComprasJPA.Purchases
             // 
             // numerodoc
             // 
-            this.numerodoc.Location = new System.Drawing.Point(558, 38);
+            this.numerodoc.Location = new System.Drawing.Point(617, 38);
             this.numerodoc.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -112,7 +115,7 @@ namespace ADReEditComprasJPA.Purchases
             // serie
             // 
             this.serie.FormattingEnabled = true;
-            this.serie.Location = new System.Drawing.Point(464, 38);
+            this.serie.Location = new System.Drawing.Point(523, 38);
             this.serie.Name = "serie";
             this.serie.Size = new System.Drawing.Size(88, 21);
             this.serie.TabIndex = 2;
@@ -120,20 +123,68 @@ namespace ADReEditComprasJPA.Purchases
             // 
             // GridLinhasArtigos
             // 
+            this.GridLinhasArtigos.AllowUserToAddRows = false;
+            this.GridLinhasArtigos.AllowUserToDeleteRows = false;
+            this.GridLinhasArtigos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GridLinhasArtigos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.GridLinhasArtigos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.GridLinhasArtigos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridLinhasArtigos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Artigo,
             this.Descricao,
+            this.Projeto,
             this.Item,
+            this.ItemCod,
             this.ItemDesc,
             this.Classe,
             this.Especialidade});
             this.GridLinhasArtigos.Location = new System.Drawing.Point(25, 66);
             this.GridLinhasArtigos.Name = "GridLinhasArtigos";
-            this.GridLinhasArtigos.Size = new System.Drawing.Size(598, 311);
+            this.GridLinhasArtigos.Size = new System.Drawing.Size(657, 284);
             this.GridLinhasArtigos.TabIndex = 3;
+            this.GridLinhasArtigos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridLinhasArtigos_KeyDown);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.salvarToolStripButton,
+            this.novoToolStripButton,
+            this.toolStripSeparator});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(708, 25);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // salvarToolStripButton
+            // 
+            this.salvarToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("salvarToolStripButton.Image")));
+            this.salvarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.salvarToolStripButton.Name = "salvarToolStripButton";
+            this.salvarToolStripButton.Size = new System.Drawing.Size(69, 22);
+            this.salvarToolStripButton.Text = "&Guardar";
+            this.salvarToolStripButton.Click += new System.EventHandler(this.salvarToolStripButton_Click);
+            // 
+            // novoToolStripButton
+            // 
+            this.novoToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("novoToolStripButton.Image")));
+            this.novoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.novoToolStripButton.Name = "novoToolStripButton";
+            this.novoToolStripButton.Size = new System.Drawing.Size(56, 22);
+            this.novoToolStripButton.Text = "&Novo";
+            this.novoToolStripButton.Click += new System.EventHandler(this.novoToolStripButton_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Artigo
             // 
@@ -147,65 +198,42 @@ namespace ADReEditComprasJPA.Purchases
             this.Descricao.Name = "Descricao";
             this.Descricao.ReadOnly = true;
             // 
+            // Projeto
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.Projeto.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Projeto.HeaderText = "Projeto";
+            this.Projeto.Name = "Projeto";
+            this.Projeto.ReadOnly = true;
+            // 
             // Item
             // 
             this.Item.HeaderText = "Item";
             this.Item.Name = "Item";
+            this.Item.ReadOnly = true;
+            // 
+            // ItemCod
+            // 
+            this.ItemCod.HeaderText = "Item Cód.";
+            this.ItemCod.Name = "ItemCod";
+            this.ItemCod.ReadOnly = true;
             // 
             // ItemDesc
             // 
-            this.ItemDesc.HeaderText = "Item Desc";
+            this.ItemDesc.HeaderText = "Item Desc.";
             this.ItemDesc.Name = "ItemDesc";
+            this.ItemDesc.ReadOnly = true;
             // 
             // Classe
             // 
-            this.Classe.HeaderText = "Classe";
+            this.Classe.HeaderText = "Classe de Atividade";
             this.Classe.Name = "Classe";
             // 
             // Especialidade
             // 
             this.Especialidade.HeaderText = "Especialidade";
             this.Especialidade.Name = "Especialidade";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novoToolStripButton,
-            this.salvarToolStripButton,
-            this.toolStripSeparator});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(656, 25);
-            this.toolStrip1.TabIndex = 4;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // novoToolStripButton
-            // 
-            this.novoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.novoToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("novoToolStripButton.Image")));
-            this.novoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.novoToolStripButton.Name = "novoToolStripButton";
-            this.novoToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.novoToolStripButton.Text = "&Novo";
-            // 
-            // salvarToolStripButton
-            // 
-            this.salvarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.salvarToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("salvarToolStripButton.Image")));
-            this.salvarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.salvarToolStripButton.Name = "salvarToolStripButton";
-            this.salvarToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.salvarToolStripButton.Text = "&Salvar";
-            // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
             // 
             // FormularioEditorCompras
             // 
@@ -217,9 +245,10 @@ namespace ADReEditComprasJPA.Purchases
             this.Controls.Add(this.numerodoc);
             this.Controls.Add(this.f41);
             this.Name = "FormularioEditorCompras";
-            this.Size = new System.Drawing.Size(656, 405);
+            this.Size = new System.Drawing.Size(708, 373);
             this.Text = "Alterador De Artigos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormularioEditorCompras_FormClosed);
+            this.Load += new System.EventHandler(this.FormularioEditorCompras_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numerodoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLinhasArtigos)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -235,16 +264,18 @@ namespace ADReEditComprasJPA.Purchases
         private System.Windows.Forms.NumericUpDown numerodoc;
         private System.Windows.Forms.ComboBox serie;
         private System.Windows.Forms.DataGridView GridLinhasArtigos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Artigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Classe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidade;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton novoToolStripButton;
         private System.Windows.Forms.ToolStripButton salvarToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Artigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Projeto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Classe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidade;
     }
 }
