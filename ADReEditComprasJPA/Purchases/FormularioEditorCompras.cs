@@ -651,6 +651,42 @@ namespace ADReEditComprasJPA.Purchases
             // Limpa a grid
             GridLinhasArtigos.Rows.Clear();
         }
+        private void LimparColunas345(int rowIndex)
+        {
+            GridLinhasArtigos.Rows[rowIndex].Cells[3].Value = string.Empty; // ItemId
+            GridLinhasArtigos.Rows[rowIndex].Cells[4].Value = string.Empty; // ItemCod
+            GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = string.Empty; // ItemDesc
+        }
 
+        private void LimparColunas45(int rowIndex)
+        {
+            GridLinhasArtigos.Rows[rowIndex].Cells[4].Value = string.Empty; // ItemCod
+            GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = string.Empty; // ItemDesc
+        }
+
+        private void GridLinhasArtigos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return; // Ignora cabeçalhos
+
+            // Limpar colunas 3,4,5 se coluna 2 foi limpa
+            if (e.ColumnIndex == 2)
+            {
+                var valor = GridLinhasArtigos.Rows[e.RowIndex].Cells[2].Value;
+                if (valor == null || string.IsNullOrWhiteSpace(valor.ToString()))
+                {
+                    LimparColunas345(e.RowIndex);
+                }
+            }
+            // Limpar colunas 4,5 se coluna 3 foi limpa
+            else if (e.ColumnIndex == 3)
+            {
+                var valor = GridLinhasArtigos.Rows[e.RowIndex].Cells[3].Value;
+                if (valor == null || string.IsNullOrWhiteSpace(valor.ToString()))
+                {
+                    LimparColunas45(e.RowIndex);
+                }
+
+            }
+        }
     }
 }

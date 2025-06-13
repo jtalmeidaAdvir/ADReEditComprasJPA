@@ -11,6 +11,7 @@ namespace PrimaveraSDK
     {
         // .NET guarantees thread safety for static initialization
         public static readonly clsSDKContexto SdkContext = new clsSDKContexto();
+        public static bool IsInitialized { get; private set; } = false;
         private static bool contextInitialized = false;
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace PrimaveraSDK
 
         public static void Initialize(dynamic BSO, dynamic PSO)
         {
-            if (!contextInitialized)
+            if (!IsInitialized)
             {
                 SdkContext.Inicializa(BSO, "ERP");
                 PSO.InicializaPlataforma(SdkContext);

@@ -32,17 +32,12 @@ namespace ADReEditComprasJPA.Purchases
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioEditorCompras));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.f41 = new PRISDK100.F4();
             this.numerodoc = new System.Windows.Forms.NumericUpDown();
             this.serie = new System.Windows.Forms.ComboBox();
             this.GridLinhasArtigos = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Artigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Projeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +46,11 @@ namespace ADReEditComprasJPA.Purchases
             this.ItemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Classe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Especialidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numerodoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridLinhasArtigos)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -144,7 +144,53 @@ namespace ADReEditComprasJPA.Purchases
             this.GridLinhasArtigos.Name = "GridLinhasArtigos";
             this.GridLinhasArtigos.Size = new System.Drawing.Size(657, 284);
             this.GridLinhasArtigos.TabIndex = 3;
+            this.GridLinhasArtigos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridLinhasArtigos_CellValueChanged);
             this.GridLinhasArtigos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridLinhasArtigos_KeyDown);
+            // 
+            // Artigo
+            // 
+            this.Artigo.HeaderText = "Artigo";
+            this.Artigo.Name = "Artigo";
+            this.Artigo.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // Projeto
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.Projeto.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Projeto.HeaderText = "Projeto";
+            this.Projeto.Name = "Projeto";
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            // 
+            // ItemCod
+            // 
+            this.ItemCod.HeaderText = "Item Cód.";
+            this.ItemCod.Name = "ItemCod";
+            // 
+            // ItemDesc
+            // 
+            this.ItemDesc.HeaderText = "Item Desc.";
+            this.ItemDesc.Name = "ItemDesc";
+            // 
+            // Classe
+            // 
+            this.Classe.HeaderText = "Classe de Atividade";
+            this.Classe.Name = "Classe";
+            // 
+            // Especialidade
+            // 
+            this.Especialidade.HeaderText = "Especialidade";
+            this.Especialidade.Name = "Especialidade";
             // 
             // toolStrip1
             // 
@@ -186,55 +232,6 @@ namespace ADReEditComprasJPA.Purchases
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Artigo
-            // 
-            this.Artigo.HeaderText = "Artigo";
-            this.Artigo.Name = "Artigo";
-            this.Artigo.ReadOnly = true;
-            // 
-            // Descricao
-            // 
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            // 
-            // Projeto
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.Projeto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Projeto.HeaderText = "Projeto";
-            this.Projeto.Name = "Projeto";
-            this.Projeto.ReadOnly = true;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            this.Item.ReadOnly = true;
-            // 
-            // ItemCod
-            // 
-            this.ItemCod.HeaderText = "Item Cód.";
-            this.ItemCod.Name = "ItemCod";
-            this.ItemCod.ReadOnly = true;
-            // 
-            // ItemDesc
-            // 
-            this.ItemDesc.HeaderText = "Item Desc.";
-            this.ItemDesc.Name = "ItemDesc";
-            this.ItemDesc.ReadOnly = true;
-            // 
-            // Classe
-            // 
-            this.Classe.HeaderText = "Classe de Atividade";
-            this.Classe.Name = "Classe";
-            // 
-            // Especialidade
-            // 
-            this.Especialidade.HeaderText = "Especialidade";
-            this.Especialidade.Name = "Especialidade";
-            // 
             // FormularioEditorCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,7 +243,7 @@ namespace ADReEditComprasJPA.Purchases
             this.Controls.Add(this.f41);
             this.Name = "FormularioEditorCompras";
             this.Size = new System.Drawing.Size(708, 373);
-            this.Text = "Alterador De Artigos";
+            this.Text = "Manutenção de Documentos de Compra";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormularioEditorCompras_FormClosed);
             this.Load += new System.EventHandler(this.FormularioEditorCompras_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numerodoc)).EndInit();
