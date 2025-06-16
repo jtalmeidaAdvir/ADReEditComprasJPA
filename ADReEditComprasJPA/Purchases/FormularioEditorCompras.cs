@@ -309,7 +309,7 @@ namespace ADReEditComprasJPA.Purchases
 
             if (classes.Count > 0)
             {
-                string codigoClasse = classes["Classe"];
+                string codigoClasse = classes["ClasseId"];
 
                 if (GridLinhasArtigos.CurrentCell != null)
                 {
@@ -328,8 +328,8 @@ namespace ADReEditComprasJPA.Purchases
             string Campos = "Classe,Descricao,ClasseId";
             string Tabela = "Geral_Classe WITH (NOLOCK)";
             string Where = "";
-            string CamposF4 = "Classe";
-            string orderby = "Classe";
+            string CamposF4 = "ClasseId";
+            string orderby = "ClasseId";
 
             List<string> ResQuery = new List<string>();
 
