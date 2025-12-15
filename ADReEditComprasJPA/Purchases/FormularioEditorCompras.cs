@@ -5,7 +5,6 @@ using PRISDK100;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace ADReEditComprasJPA.Purchases
@@ -41,9 +40,9 @@ namespace ADReEditComprasJPA.Purchases
                 f41.Termina();
                 controlsInitialized = false;
             }
-            catch 
+            catch
             {
-            
+
             }
         }
 
@@ -59,8 +58,8 @@ namespace ADReEditComprasJPA.Purchases
                 string seriePorDefeito = BSO.Base.Series.DaSerieDefeito("C", f41.Text);
 
                 string sqlSeries = $@"
-            SELECT Serie 
-            FROM SeriesCompras 
+            SELECT Serie
+            FROM SeriesCompras
             WHERE Tipodoc = '{f41.Text.Replace("'", "''")}'";
                 var cursorSeries = BSO.Consulta(sqlSeries);
 
@@ -100,7 +99,7 @@ namespace ADReEditComprasJPA.Purchases
                 string serieSelecionada = serie.SelectedItem.ToString().Replace("'", "''");
                 string sqlUltimoNum = $@"
             SELECT ISNULL(MAX(numdoc), 0) AS Ultimo
-            FROM CabecCompras 
+            FROM CabecCompras
             WHERE Tipodoc = '{f41.Text.Replace("'", "''")}'
               AND Serie   = '{serieSelecionada}'";
 
@@ -128,24 +127,24 @@ namespace ADReEditComprasJPA.Purchases
                 int numDoc = (int)numerodoc.Value;
 
                 string sqlLinhas = $@"
-                                    SELECT 
+                                    SELECT
                                         L.Artigo,
                                         L.Descricao,
                                         O.Codigo AS CodigoObra,
-	                                     L.ItemId,
+                                         L.ItemId,
                                         L.ItemCod,
-	                                    L.ItemDesc,
+                                        L.ItemDesc,
                                         L.ClasseID,
                                         L.SubEmpID
-                                    FROM 
+                                    FROM
                                         CabecCompras C
-                                    INNER JOIN 
+                                    INNER JOIN
                                         LinhasCompras L ON C.Id = L.IdCabecCompras
-                                    LEFT JOIN 
+                                    LEFT JOIN
                                         COP_Obras O ON L.ObraID = O.ID
-            WHERE 
-                C.TipoDoc = '{tipoDoc}' AND 
-                C.Serie = '{serieSelecionada}' AND 
+            WHERE
+                C.TipoDoc = '{tipoDoc}' AND
+                C.Serie = '{serieSelecionada}' AND
                 C.NumDoc = {numDoc}";
 
                 var cursor = BSO.Consulta(sqlLinhas);
@@ -154,17 +153,19 @@ namespace ADReEditComprasJPA.Purchases
                 GridLinhasArtigos.Rows.Clear();
 
                 // Preencher a grid
+                int numeroLinha = 1;
                 while (!cursor.NoFim())
                 {
                     GridLinhasArtigos.Rows.Add(
+                        numeroLinha++, // Adiciona o número da linha
                         cursor.Valor("Artigo")?.ToString() ?? "",
                         cursor.Valor("Descricao")?.ToString() ?? "",
                         cursor.Valor("CodigoObra")?.ToString() ?? "",
                         cursor.Valor("ItemId")?.ToString() ?? "",
                         cursor.Valor("ItemCod")?.ToString() ?? "",
-                        cursor.Valor("ItemDesc")?.ToString() ?? "", 
-                        cursor.Valor("ClasseID")?.ToString() ?? "", 
-                        cursor.Valor("SubEmpID")?.ToString() ?? "" 
+                        cursor.Valor("ItemDesc")?.ToString() ?? "",
+                        cursor.Valor("ClasseID")?.ToString() ?? "",
+                        cursor.Valor("SubEmpID")?.ToString() ?? ""
                     );
 
                     cursor.Seguinte();
@@ -185,12 +186,8 @@ namespace ADReEditComprasJPA.Purchases
                 {
                     int coluna = cell.ColumnIndex;
 
-                    // Só precisa de form/control fictícios, pois são exigidos pelo método
-                    Form form = new Form();
-                    Control control = new Control();
-
-                    // Coluna 2: abrir lista (TrataF4Id)
-                    if (coluna == 2)
+                    // Coluna 3: abrir lista (TrataF4Id) - Obra
+                    if (coluna == 3)
                     {
                         try
                         {
@@ -205,7 +202,8 @@ namespace ADReEditComprasJPA.Purchases
                         e.Handled = true;
                     }
 
-                    if(coluna == 3)
+                    // Coluna 4: abrir lista de itens
+                    if (coluna == 4)
                     {
                         try
                         {
@@ -214,30 +212,15 @@ namespace ADReEditComprasJPA.Purchases
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Erro ao abrir a lista de projetos: " + ex.Message);
+                            MessageBox.Show("Erro ao abrir a lista de itens: " + ex.Message);
                         }
 
                         e.Handled = true;
                     }
 
-                    if(coluna == 6)
+                    // Coluna 7: abrir lista de especialidades
+                    if (coluna == 7)
                     {
-                        try
-                        {
-                            MetodoGetClasse();
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Erro ao abrir a lista de projetos: " + ex.Message);
-                        }
-
-                        e.Handled = true;
-                    }
-                    // Colunas 3, 6 e 7: apenas mostrar o valor
-                    else if (coluna == 7)
-                    {
-
                         try
                         {
                             MetodoGetEspecialidade();
@@ -245,7 +228,23 @@ namespace ADReEditComprasJPA.Purchases
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Erro ao abrir a lista de projetos: " + ex.Message);
+                            MessageBox.Show("Erro ao abrir a lista de especialidades: " + ex.Message);
+                        }
+
+                        e.Handled = true;
+                    }
+                    // Coluna 6: abrir lista de classes
+                    else if (coluna == 6)
+                    {
+
+                        try
+                        {
+                            MetodoGetClasse();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Erro ao abrir a lista de classes: " + ex.Message);
                         }
 
                         e.Handled = true;
@@ -268,8 +267,8 @@ namespace ADReEditComprasJPA.Purchases
                 {
                     int rowIndex = GridLinhasArtigos.CurrentCell.RowIndex;
 
-                    // Coluna 2 recebe o código do projeto
-                    GridLinhasArtigos.Rows[rowIndex].Cells[7].Value = codigoespecialidade;
+                    // Coluna 8 recebe o código da especialidade
+                    GridLinhasArtigos.Rows[rowIndex].Cells[8].Value = codigoespecialidade;
 
                 }
             }
@@ -315,8 +314,8 @@ namespace ADReEditComprasJPA.Purchases
                 {
                     int rowIndex = GridLinhasArtigos.CurrentCell.RowIndex;
 
-                    // Coluna 2 recebe o código do projeto
-                    GridLinhasArtigos.Rows[rowIndex].Cells[6].Value = codigoClasse;
+                    // Coluna 7 recebe o código da classe
+                    GridLinhasArtigos.Rows[rowIndex].Cells[7].Value = codigoClasse;
 
                 }
             }
@@ -353,10 +352,10 @@ namespace ADReEditComprasJPA.Purchases
             Dictionary<string, string> items = new Dictionary<string, string>();
 
             GetItems(ref items);
-            
+
             if (items.Count > 0)
             {
-             
+
                 string codigoItem = items["ITEMID"]; //
                 string ItemCod = items["ItemCod"];
                 string ItemDesc = items["ItemDesc"];
@@ -366,14 +365,14 @@ namespace ADReEditComprasJPA.Purchases
                 {
                     int rowIndex = GridLinhasArtigos.CurrentCell.RowIndex;
 
-                    // Coluna 3 (índice 3) recebe ITEMID
-                    GridLinhasArtigos.Rows[rowIndex].Cells[3].Value = codigoItem;
+                    // Coluna 4 (índice 4) recebe ITEMID
+                    GridLinhasArtigos.Rows[rowIndex].Cells[4].Value = codigoItem;
 
-                    // Coluna 4 (índice 4) recebe ItemCod
-                    GridLinhasArtigos.Rows[rowIndex].Cells[4].Value = ItemCod;
+                    // Coluna 5 (índice 5) recebe ItemCod
+                    GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = ItemCod;
 
-                    // Coluna 5 (índice 5) recebe ItemDesc
-                    GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = ItemDesc;
+                    // Coluna 6 (índice 6) recebe ItemDesc
+                    GridLinhasArtigos.Rows[rowIndex].Cells[6].Value = ItemDesc;
                 }
             }
         }
@@ -392,13 +391,11 @@ namespace ADReEditComprasJPA.Purchases
                 {
                     int rowIndex = GridLinhasArtigos.CurrentCell.RowIndex;
 
-                    // Coluna 2 recebe o código do projeto
-                    GridLinhasArtigos.Rows[rowIndex].Cells[2].Value = codigoProjeto;
+                    // Coluna 3 recebe o código do projeto
+                    GridLinhasArtigos.Rows[rowIndex].Cells[3].Value = codigoProjeto;
 
-                    // Limpa colunas 3, 4 e 5
-                    GridLinhasArtigos.Rows[rowIndex].Cells[3].Value = string.Empty;
-                    GridLinhasArtigos.Rows[rowIndex].Cells[4].Value = string.Empty;
-                    GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = string.Empty;
+                    // Limpa colunas 4, 5 e 6
+                    LimparColunas456(rowIndex);
                 }
             }
         }
@@ -410,23 +407,24 @@ namespace ADReEditComprasJPA.Purchases
 
             List<string> ResQuery = new List<string>();
 
-            // Obter o ID da coluna 2 da linha atual
+            // Obter o ID da coluna 3 da linha atual (que agora contém o CódigoObra)
             string idProjeto = "";
 
             if (GridLinhasArtigos.CurrentCell != null)
             {
                 int rowIndex = GridLinhasArtigos.CurrentCell.RowIndex;
-                object valorCelula = GridLinhasArtigos.Rows[rowIndex].Cells[2].Value;
+                object valorCelula = GridLinhasArtigos.Rows[rowIndex].Cells[3].Value; // Coluna 3 para CodigoObra
 
                 idProjeto = valorCelula?.ToString() ?? "";
 
+                // Obter o ID da obra a partir do código da obra
                 idProjeto = BSO.Consulta($"SELECT  ID FROM COP_Obras WHERE Codigo = '{idProjeto}'").DaValor<string>("ID");
 
             }
 
             if (string.IsNullOrWhiteSpace(idProjeto))
             {
-                MessageBox.Show("ID do projeto não encontrado na coluna 2.");
+                MessageBox.Show("Código da Obra não encontrado na coluna 3.");
                 return;
             }
 
@@ -514,15 +512,37 @@ namespace ADReEditComprasJPA.Purchases
             // Ativa a personalização de cabeçalhos
             GridLinhasArtigos.EnableHeadersVisualStyles = false;
 
-            // Índices das colunas que você quer estilizar: 2, 3, 6, 7
-            int[] colunas = { 2, 3, 6, 7 };
+            // Adiciona a coluna numeradora no início se ainda não existir
+            if (!GridLinhasArtigos.Columns.Contains("LinhaNum"))
+            {
+                var colunaLinha = new DataGridViewTextBoxColumn
+                {
+                    Name = "LinhaNum",
+                    HeaderText = "Linha",
+                    Width = 50,
+                    ReadOnly = true,
+                    SortMode = DataGridViewColumnSortMode.NotSortable
+                };
+                colunaLinha.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                colunaLinha.HeaderCell.Style.ForeColor = Color.White;
+                colunaLinha.HeaderCell.Style.BackColor = Color.SteelBlue;
+                GridLinhasArtigos.Columns.Insert(0, colunaLinha);
+            }
+
+            // Índices das colunas que você quer estilizar: 3, 4, 6, 7, 8 (ajustados após adicionar coluna numeradora)
+            int[] colunas = { 3, 4, 6, 7, 8 };
+
+            // Define a cor de fundo e a cor do texto para os cabeçalhos
+            GridLinhasArtigos.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            GridLinhasArtigos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
             foreach (int indice in colunas)
             {
                 if (indice < GridLinhasArtigos.Columns.Count)
                 {
                     var coluna = GridLinhasArtigos.Columns[indice];
-                    coluna.HeaderCell.Style.ForeColor = Color.SteelBlue;
+                    coluna.HeaderCell.Style.ForeColor = Color.White; // Cor do texto
+                    coluna.HeaderCell.Style.BackColor = Color.SteelBlue; // Cor de fundo
                     coluna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
@@ -548,9 +568,9 @@ namespace ADReEditComprasJPA.Purchases
 
             // Obter ID do documento
             var idCabec = BSO.Consulta($@"
-        SELECT Id FROM CabecCompras 
-        WHERE TipoDoc = '{tipoDoc}' 
-          AND Serie = '{serieSelecionada}' 
+        SELECT Id FROM CabecCompras
+        WHERE TipoDoc = '{tipoDoc}'
+          AND Serie = '{serieSelecionada}'
           AND NumDoc = {numeroDoc}
     ").DaValor<string>("Id");
 
@@ -560,11 +580,11 @@ namespace ADReEditComprasJPA.Purchases
                 return;
             }
 
-            // Obter todas as linhas do documento com seus números de linha
+            // Criar um dicionário para mapear artigos a números de linha
             var linhasSQL = BSO.Consulta($@"
-        SELECT NumLinha, Artigo 
-        FROM LinhasCompras 
-        WHERE IdCabecCompras = '{idCabec}' 
+        SELECT NumLinha, Artigo
+        FROM LinhasCompras
+        WHERE IdCabecCompras = '{idCabec}'
         ORDER BY NumLinha
     ");
 
@@ -574,57 +594,89 @@ namespace ADReEditComprasJPA.Purchases
                 return;
             }
 
+            Dictionary<string, int> artigoToNumLinha = new Dictionary<string, int>();
             linhasSQL.Inicio();
+            while (!linhasSQL.NoFim())
+            {
+                var artigo = linhasSQL.DaValor<string>("Artigo");
+                var numLinha = linhasSQL.DaValor<int>("NumLinha");
+                if (!string.IsNullOrWhiteSpace(artigo))
+                {
+                    artigoToNumLinha[artigo] = numLinha;
+                }
+                linhasSQL.Seguinte();
+            }
 
+            // Agora iterar pela grid e atualizar cada linha correspondente
             for (int i = 0; i < GridLinhasArtigos.Rows.Count; i++)
             {
                 var row = GridLinhasArtigos.Rows[i];
                 if (row.IsNewRow) continue;
 
-                var artigo = row.Cells[0].Value?.ToString();
-                var codigoProjeto = row.Cells[2].Value?.ToString() ?? "";
+                var artigo = row.Cells[1].Value?.ToString()?.Trim(); // Artigo é a segunda coluna (índice 1)
 
-                if (string.IsNullOrWhiteSpace(artigo) || string.IsNullOrWhiteSpace(codigoProjeto))
+                // Pular se não há artigo
+                if (string.IsNullOrWhiteSpace(artigo))
                 {
-                    linhasSQL.Seguinte();
                     continue;
                 }
 
-                var numLinha = linhasSQL.DaValor<int>("NumLinha");
+                // Encontrar o número da linha correspondente no banco de dados
+                if (!artigoToNumLinha.ContainsKey(artigo))
+                {
+                    continue; // Artigo não encontrado, pular
+                }
 
-                // Obter ID da obra
-                var idObra = BSO.Consulta($@"SELECT ID FROM COP_Obras WHERE Codigo = '{codigoProjeto}'")
-                                .DaValor<string>("ID");
+                var numLinha = artigoToNumLinha[artigo];
+
+                // Obter projeto (pode estar vazio)
+                var valorProjeto = row.Cells[3].Value;
+                var codigoProjeto = valorProjeto?.ToString()?.Trim() ?? "";
+
+                // Obter ID da obra (pode ser NULL se projeto foi removido)
+                string idObra = "NULL";
+                if (!string.IsNullOrWhiteSpace(codigoProjeto))
+                {
+                    var obraResult = BSO.Consulta($@"SELECT ID FROM COP_Obras WHERE Codigo = '{codigoProjeto.Replace("'", "''")}'");
+                    if (!obraResult.Vazia())
+                    {
+                        idObra = $"'{obraResult.DaValor<string>("ID")}'";
+                    }
+                    else
+                    {
+                        // Se não encontrar a obra, define como NULL
+                        idObra = "NULL";
+                    }
+                }
 
                 // Obter os campos opcionais
-                var IDItem = row.Cells[3].Value?.ToString()?.Replace("'", "''");
-                var ItemCod = row.Cells[4].Value?.ToString()?.Replace("'", "''");
-                var ItemDesc = row.Cells[5].Value?.ToString()?.Replace("'", "''");
+                var IDItem = row.Cells[4].Value?.ToString()?.Trim()?.Replace("'", "''");
+                var ItemCod = row.Cells[5].Value?.ToString()?.Trim()?.Replace("'", "''");
+                var ItemDesc = row.Cells[6].Value?.ToString()?.Trim()?.Replace("'", "''");
 
-                var valorClasse = row.Cells[6].Value?.ToString();
+                var valorClasse = row.Cells[7].Value?.ToString()?.Trim();
                 var ClasseActividade = string.IsNullOrWhiteSpace(valorClasse) || !int.TryParse(valorClasse, out var classeInt)
                     ? "NULL" : classeInt.ToString();
 
-                var valorSubEmp = row.Cells[7].Value?.ToString();
+                var valorSubEmp = row.Cells[8].Value?.ToString()?.Trim();
                 var SubEmpreitada = string.IsNullOrWhiteSpace(valorSubEmp) || !int.TryParse(valorSubEmp, out var subEmpInt)
                     ? "NULL" : subEmpInt.ToString();
 
                 // Construir e executar o UPDATE
                 var updateQuery = $@"
-            UPDATE LinhasCompras 
-            SET 
-                ObraID = '{idObra}',
+            UPDATE LinhasCompras
+            SET
+                ObraID = {idObra},
                 ItemId = {(string.IsNullOrWhiteSpace(IDItem) ? "NULL" : $"'{IDItem}'")},
                 ItemCod = {(string.IsNullOrWhiteSpace(ItemCod) ? "NULL" : $"'{ItemCod}'")},
                 ItemDesc = {(string.IsNullOrWhiteSpace(ItemDesc) ? "NULL" : $"'{ItemDesc}'")},
                 ClasseID = {ClasseActividade},
                 SubEmpID = {SubEmpreitada}
-            WHERE 
+            WHERE
                 IdCabecCompras = '{idCabec}' AND NumLinha = {numLinha}
         ";
 
                 BSO.DSO.ExecuteSQL(updateQuery);
-                linhasSQL.Seguinte();
             }
 
             MessageBox.Show("Documento atualizado com sucesso!");
@@ -651,41 +703,48 @@ namespace ADReEditComprasJPA.Purchases
             // Limpa a grid
             GridLinhasArtigos.Rows.Clear();
         }
-        private void LimparColunas345(int rowIndex)
+
+        private void LimparColunas456(int rowIndex)
         {
-            GridLinhasArtigos.Rows[rowIndex].Cells[3].Value = string.Empty; // ItemId
-            GridLinhasArtigos.Rows[rowIndex].Cells[4].Value = string.Empty; // ItemCod
-            GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = string.Empty; // ItemDesc
+            GridLinhasArtigos.Rows[rowIndex].Cells[4].Value = string.Empty; // ItemId
+            GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = string.Empty; // ItemCod
+            GridLinhasArtigos.Rows[rowIndex].Cells[6].Value = string.Empty; // ItemDesc
         }
 
-        private void LimparColunas45(int rowIndex)
+        private void LimparColunas56(int rowIndex)
         {
-            GridLinhasArtigos.Rows[rowIndex].Cells[4].Value = string.Empty; // ItemCod
-            GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = string.Empty; // ItemDesc
+            GridLinhasArtigos.Rows[rowIndex].Cells[5].Value = string.Empty; // ItemCod
+            GridLinhasArtigos.Rows[rowIndex].Cells[6].Value = string.Empty; // ItemDesc
         }
 
         private void GridLinhasArtigos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return; // Ignora cabeçalhos
 
-            // Limpar colunas 3,4,5 se coluna 2 foi limpa
-            if (e.ColumnIndex == 2)
-            {
-                var valor = GridLinhasArtigos.Rows[e.RowIndex].Cells[2].Value;
-                if (valor == null || string.IsNullOrWhiteSpace(valor.ToString()))
-                {
-                    LimparColunas345(e.RowIndex);
-                }
-            }
-            // Limpar colunas 4,5 se coluna 3 foi limpa
-            else if (e.ColumnIndex == 3)
+            // Limpar colunas 4,5,6 se coluna 3 (Obra) foi limpa
+            if (e.ColumnIndex == 3)
             {
                 var valor = GridLinhasArtigos.Rows[e.RowIndex].Cells[3].Value;
-                if (valor == null || string.IsNullOrWhiteSpace(valor.ToString()))
-                {
-                    LimparColunas45(e.RowIndex);
-                }
+                var valorStr = valor?.ToString()?.Trim() ?? "";
 
+                if (string.IsNullOrWhiteSpace(valorStr))
+                {
+                    // Define explicitamente como vazio e limpa as colunas dependentes
+                    GridLinhasArtigos.Rows[e.RowIndex].Cells[3].Value = string.Empty;
+                    LimparColunas456(e.RowIndex);
+                }
+            }
+            // Limpar colunas 5,6 se coluna 4 (ItemId) foi limpa
+            else if (e.ColumnIndex == 4)
+            {
+                var valor = GridLinhasArtigos.Rows[e.RowIndex].Cells[4].Value;
+                var valorStr = valor?.ToString()?.Trim() ?? "";
+
+                if (string.IsNullOrWhiteSpace(valorStr))
+                {
+                    GridLinhasArtigos.Rows[e.RowIndex].Cells[4].Value = string.Empty;
+                    LimparColunas56(e.RowIndex);
+                }
             }
         }
     }
